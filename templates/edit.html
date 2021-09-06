@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+
+               <div class="tm-col-left">
+            <form method="post"  class="p-3 shadow">
+
+    {% csrf_token %}
+                <div>
+                {{ form.as_p }}
+            </div>
+
+
+    <input type="submit" class="btn btn-success" value="submit">
+</form>
+        </div>
+
+
+
+{% endblock %}

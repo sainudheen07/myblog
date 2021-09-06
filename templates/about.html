@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+            <div class="tm-col-left">
+            <form method="post"  class="p-3 shadow">
+
+    {% csrf_token %}
+    <input type="text" name="hedding" class="form-control" placeholder="Blog heading"><br>
+                <textarea name="content" class="form-control" placeholder="Write Your blog Here.."></textarea><br>
+                    <input type="text" name="auther" class="form-control" placeholder="Auther name"><br>
+
+
+                   <input type="date" name="date" class="form-control"><br>
+
+    <input type="submit" class="btn btn-success" value="submit">
+</form>
+        </div>
+
+            
+            <div class="tm-row">
+                <div class="tm-col-left"></div>
+                <main class="tm-col-right">
+                    <section class="tm-content tm-about">
+                        {% for i in obj1 %}
+                        <h2 class="mb-5 tm-content-title">{{ i.hedding}}</h2>
+                        <hr class="mb-4">
+                        <div class="media my-3">
+
+                            <div class="media-body">
+                                <p>{{i.content}}.</p>
+                                <br><p>{{i.auther}}</p>
+
+                                <a class="btn btn-danger" href="{% url  'blog:delete' i.id  %}">delete</a>
+                                <a class="btn btn-success" href="{% url  'blog:update' i.id  %}">edit</a>
+
+                                {% endfor %}
+                            </div> 
+                        </div>
+<!--                        <div class="media my-3">-->
+<!--                            <i class="fas fa-draw-polygon fa-3x p-3 mr-4"></i>-->
+<!--                            <div class="media-body">-->
+<!--                                <p>Nunc id hendrerit nunc. Etiam ultricies arcu sem, vel dapibus lacus lacinia quis. Nunc auctor placerat nisi ac ultrices.</p>-->
+<!--                            </div> -->
+<!--                        </div>-->
+<!--                        <div class="media my-3">-->
+<!--                            <i class="fab fa-creative-commons-share fa-3x p-3 mr-4"></i>-->
+<!--                            <div class="media-body">-->
+<!--                                <p>Vestibulum imperdiet hendrerit nibh. Integer sit amet lacus et nunc auctor tincidunt eu ac sapien. Ut suscipit velit eget faucibus finibus.</p>-->
+<!--                            </div> -->
+<!--                        </div>-->
+<!--                        <div class="media my-3">-->
+<!--                            <i class="fas fa-bookmark fa-3x p-3 mr-4"></i>-->
+<!--                            <div class="media-body">-->
+<!--                                <p>Prasent eget enim vitae sapien egestas aliquet non quis neque. Duis pharetra varius massa, ut bibendum tortor sodales ac.</p>-->
+<!--                            </div> -->
+<!--                        </div>                        -->
+                    </section>
+                </main>
+            </div>
+
+
+         {% endblock %}
